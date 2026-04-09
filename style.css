@@ -1,18 +1,44 @@
+:root {
+  --bg-color: #f0f0f0;
+  --card-bg-color: white;
+  --text-color: #333;
+  --ball-bg-color: #4caf50;
+  --ball-text-color: white;
+  --button-bg-color: #4caf50;
+  --button-hover-bg-color: #45a049;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --card-bg-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --ball-bg-color: #bb86fc;
+  --ball-text-color: #000;
+  --button-bg-color: #bb86fc;
+  --button-hover-bg-color: #9965f4;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
 body {
-  background-color: #f0f0f0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
   font-family: sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .lotto-card {
-  background-color: white;
+  background-color: var(--card-bg-color);
   border-radius: 15px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--shadow-color);
   text-align: center;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .lotto-title {
@@ -29,25 +55,40 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--ball-bg-color);
+  color: var(--ball-text-color);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   margin: 0 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .lotto-button {
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--button-bg-color);
+  color: var(--ball-text-color);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .lotto-button:hover {
-  background-color: #45a049;
+  background-color: var(--button-hover-bg-color);
+}
+
+.theme-toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
