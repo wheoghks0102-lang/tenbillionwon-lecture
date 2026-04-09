@@ -1,1 +1,53 @@
-/* Add styles here */
+body {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.lotto-card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.lotto-title {
+  margin-top: 0;
+}
+
+.lotto-numbers-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.lotto-ball {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  margin: 0 5px;
+}
+
+.lotto-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.lotto-button:hover {
+  background-color: #45a049;
+}
