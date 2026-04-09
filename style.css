@@ -1,22 +1,20 @@
 :root {
-  --bg-color: #f0f0f0;
-  --card-bg-color: white;
-  --text-color: #333;
-  --ball-bg-color: #4caf50;
-  --ball-text-color: white;
-  --button-bg-color: #4caf50;
-  --button-hover-bg-color: #45a049;
+  --bg-color: #e6f3ff;
+  --card-bg-color: #ffffff;
+  --text-color: #5a8bae;
+  --editor-bg-color: #ffffff;
+  --editor-header-color: #f0f0f0;
+  --code-text-color: #333;
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 body.dark-mode {
-  --bg-color: #121212;
-  --card-bg-color: #1e1e1e;
-  --text-color: #e0e0e0;
-  --ball-bg-color: #bb86fc;
-  --ball-text-color: #000;
-  --button-bg-color: #bb86fc;
-  --button-hover-bg-color: #9965f4;
+  --bg-color: #1a1a2e;
+  --card-bg-color: #16213e;
+  --text-color: #e94560;
+  --editor-bg-color: #0f3460;
+  --editor-header-color: #16213e;
+  --code-text-color: #f1f1f1;
   --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -26,69 +24,93 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
-  font-family: sans-serif;
-  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
+  transition: all 0.3s ease;
 }
 
-.lotto-card {
-  background-color: var(--card-bg-color);
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 8px var(--shadow-color);
-  text-align: center;
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.lotto-title {
-  margin-top: 0;
-}
-
-.lotto-numbers-container {
+.cinnamoroll-container {
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.lotto-ball {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: var(--ball-bg-color);
-  color: var(--ball-text-color);
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  font-size: 24px;
-  margin: 0 5px;
-  transition: background-color 0.3s, color 0.3s;
+  gap: 20px;
+  width: 90%;
+  max-width: 600px;
 }
 
-.lotto-button {
-  background-color: var(--button-bg-color);
-  color: var(--ball-text-color);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+.character-gif {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.editor-window {
+  width: 100%;
+  background-color: var(--editor-bg-color);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  overflow: hidden;
+  border: 1px solid var(--shadow-color);
+}
+
+.editor-header {
+  background-color: var(--editor-header-color);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--shadow-color);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.red { background-color: #ff5f56; }
+.yellow { background-color: #ffbd2e; }
+.green { background-color: #27c93f; }
+
+.file-name {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.editor-body {
+  padding: 20px;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-.lotto-button:hover {
-  background-color: var(--button-hover-bg-color);
+  line-height: 1.5;
+  color: var(--code-text-color);
+  min-height: 200px;
+  white-space: pre-wrap;
+  text-align: left;
 }
 
 .theme-toggle-btn {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: none;
-  border: 1px solid var(--text-color);
+  background-color: var(--card-bg-color);
+  border: 2px solid var(--text-color);
   color: var(--text-color);
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 10px 15px;
+  border-radius: 20px;
   cursor: pointer;
+  font-weight: bold;
   transition: all 0.3s;
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px var(--shadow-color);
 }

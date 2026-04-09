@@ -1,6 +1,5 @@
-const lottoNumbersContainer = document.getElementById('lotto-numbers');
-const generateBtn = document.getElementById('generate-btn');
 const themeToggleBtn = document.getElementById('theme-toggle');
+const codeOutput = document.getElementById('code-output');
 
 // Theme toggle logic
 const currentTheme = localStorage.getItem('theme');
@@ -21,19 +20,51 @@ themeToggleBtn.addEventListener('click', () => {
   localStorage.setItem('theme', theme);
 });
 
-generateBtn.addEventListener('click', () => {
-  lottoNumbersContainer.innerHTML = ''; // Clear previous numbers
+// Typing Effect logic
+const codeLines = [
+  '// Cinnamoroll is coding...',
+  'const world = "sweet";',
+  'function makeCinnamonRolls(count) {',
+  '  return Array(count).fill("🧁");',
+  '}',
+  '',
+  'console.log("Cinnamoroll says: Hello World!");',
+  'const rolls = makeCinnamonRolls(5);',
+  'console.log("Baked rolls:", rolls.join(" "));',
+  '',
+  'if (world === "sweet") {',
+  '  console.log("Life is delicious! ✨");',
+  '}'
+];
 
-  const numbers = new Set();
-  while (numbers.size < 6) {
-    const randomNumber = Math.floor(Math.random() * 45) + 1;
-    numbers.add(randomNumber);
-  }
+let lineIndex = 0;
+let charIndex = 0;
+const typingSpeed = 50;
+const lineDelay = 500;
 
-  for (const number of numbers) {
-    const lottoBall = document.createElement('div');
-    lottoBall.classList.add('lotto-ball');
-    lottoBall.textContent = number;
-    lottoNumbersContainer.appendChild(lottoBall);
+function typeCode() {
+  if (lineIndex < codeLines.length) {
+    const currentLine = codeLines[lineIndex];
+    if (charIndex < currentLine.length) {
+      codeOutput.textContent += currentLine[charIndex];
+      charIndex++;
+      setTimeout(typeCode, typingSpeed);
+    } else {
+      codeOutput.textContent += '\n';
+      lineIndex++;
+      charIndex = 0;
+      setTimeout(typeCode, lineDelay);
+    }
+  } else {
+    // Reset or stop
+    setTimeout(() => {
+      codeOutput.textContent = '';
+      lineIndex = 0;
+      charIndex = 0;
+      typeCode();
+    }, 3000);
   }
-});
+}
+
+// Start typing animation
+typeCode();
