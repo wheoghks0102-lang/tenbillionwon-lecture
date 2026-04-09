@@ -26,8 +26,10 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
+  padding: 20px 0;
   font-family: 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
   transition: all 0.3s ease;
+  overflow-x: hidden;
 }
 
 .cinnamoroll-container {
@@ -37,13 +39,12 @@ body {
   gap: 20px;
   width: 90%;
   max-width: 600px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 0 auto;
 }
 
 .character-gif {
   width: 100%;
-  max-width: 600px;
+  max-width: 540px;
   height: auto;
   border-radius: 15px;
   box-shadow: 0 4px 15px var(--shadow-color);
