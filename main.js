@@ -22,49 +22,45 @@ themeToggleBtn.addEventListener('click', () => {
 
 // Typing Effect logic
 const friends = ['심우성', '최준', '조윤혜', '전유희', '채의진', '조대환'];
-const actions = [
-  'is debugging the universe...',
-  'found a legendary bug!',
-  'is refactoring the secret recipe.',
-  'just pushed a massive update!',
-  'is crafting a masterpiece code.',
-  'optimized the coffee machine algorithm.'
+
+const storyTemplates = [
+  (f1, f2) => `// ${f1}님은 ${f2}님과 함께 영원한 대학원생 형벌을 받았습니다. 🎓`,
+  (f1, f2) => `if (${f1} !== ${f2}) { console.log("${f1}님이 ${f2}님에게 똥을 던졌습니다! 💩"); }`,
+  (f1, f2) => `function trade() { ${f1}님이 ${f2}님에게 27,000원을 입금했습니다. 💸 }`,
+  (f1, f2) => `// ${f1}님이 ${f2}님의 코드를 몰래 삭제하고 도망갑니다. 🏃‍♂️💨`,
+  (f1, f2) => `while (true) { ${f1}님은 ${f2}님의 잔소리를 듣고 있습니다. 👂 }`,
+  (f1, f2) => `// ${f1}님과 ${f2}님은 오늘 점심 메뉴로 심각한 토론 중입니다. 🍱`,
+  (f1, f2) => `try { ${f1}님이 ${f2}님에게 고백을 시도합니다... } catch (error) { "차였습니다." }`,
+  (f1, f2) => `// ${f1}님이 ${f2}님의 키보드에서 'Enter' 키를 빼버렸습니다. ⌨️`,
+  (f1, f2) => `const friendship = ${f1}.love(${f2}); // 우정이 +100 증가했습니다. ✨`,
+  (f1, f2) => `// ${f1}님은 ${f2}님이 잠든 사이 노트북에 시나몬롤 스티커를 붙였습니다. 🐰`,
+  (f1, f2) => `if (${f1}.isHungry()) { ${f2}님의 도시락을 뺏어먹습니다. 🍱 }`,
+  (f1, f2) => `// ${f1}님은 ${f2}님보다 코딩을 1초 더 빨리 해서 기분이 좋습니다. 😎`
 ];
 
 function generateRandomStory() {
-  const storyLines = ['// Cinnamoroll and friends are coding...', ''];
+  const storyLines = ['// 시나몬롤과 친구들의 우당탕탕 코딩 라이프...', ''];
   
-  // Shuffle friends and actions for randomness
-  const shuffledFriends = [...friends].sort(() => Math.random() - 0.5);
+  // Create 10 random funny interactions
+  for (let i = 0; i < 10; i++) {
+    const shuffled = [...friends].sort(() => Math.random() - 0.5);
+    const f1 = shuffled[0];
+    const f2 = shuffled[1];
+    const template = storyTemplates[Math.floor(Math.random() * storyTemplates.length)];
+    
+    storyLines.push(template(f1, f2));
+    storyLines.push(''); // Add space between stories
+  }
   
-  shuffledFriends.forEach((friend, index) => {
-    const action = actions[Math.floor(Math.random() * actions.length)];
-    storyLines.push(`const ${getEnglishName(friend)} = "${friend}";`);
-    storyLines.push(`${getEnglishName(friend)}.${action.replace(/ /g, '_').replace('...', '')}();`);
-    storyLines.push('');
-  });
-  
-  storyLines.push('console.log("Team Cinnamoroll is the best! ✨");');
+  storyLines.push('console.log("오늘도 평화로운 팀 시나몬롤! ✨");');
   return storyLines;
-}
-
-function getEnglishName(name) {
-  const mapping = {
-    '심우성': 'woosung',
-    '최준': 'choijun',
-    '조윤혜': 'yunhye',
-    '전유희': 'yuhee',
-    '채의진': 'uijin',
-    '조대환': 'daehwan'
-  };
-  return mapping[name] || 'friend';
 }
 
 let codeLines = generateRandomStory();
 let lineIndex = 0;
 let charIndex = 0;
-const typingSpeed = 40;
-const lineDelay = 400;
+const typingSpeed = 30; // Slightly faster for longer text
+const lineDelay = 600;
 
 function typeCode() {
   if (lineIndex < codeLines.length) {
